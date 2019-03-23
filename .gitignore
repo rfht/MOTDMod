@@ -1,0 +1,6 @@
+**/CVS
+**/.cvsignore
+**/.vs
+*/bin
+*/obj
+packages/

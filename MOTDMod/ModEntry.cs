@@ -23,6 +23,9 @@ namespace MOTDMod
         public override void Entry(IModHelper helper)
         {
             this.Config = this.Helper.ReadConfig<ModConfig>();
+            // chat message gets truncated at 411 characters in my testing
+            if (this.Config.Motd_text.Length >= 411)
+                this.Monitor.Log("WARNING: MOTD text exceeds 411 characters and may be truncated");
             helper.Events.Multiplayer.PeerContextReceived += this.OnPeerContextReceived;
             helper.Events.GameLoop.OneSecondUpdateTicked += this.OnOneSecondUpdateTicked;
         }
